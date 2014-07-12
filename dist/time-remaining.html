@@ -1,0 +1,35 @@
+<!-- Import Polymer -->
+<link rel="import" href="../../polymer/polymer.html">
+
+<!-- Define your custom element -->
+<polymer-element name="time-remaining" attributes="target">
+    <template>
+        {{remaining.days}} dní {{remaining.hours}}:{{remaining.minutes}}:{{remaining.seconds}}
+    </template>
+    <script>
+        Polymer('time-remaining', {
+            remaining: 0,
+            ready: function() {
+                var _this = this;
+                setInterval(function() { _this.update(); }, 500);
+            },
+            update: function() {
+                millis = new Date(new Date(this.target) - new Date());
+                var totalSeconds = Math.floor(millis / 1000);
+                var totalMinutes = Math.floor(totalSeconds / 60);
+                totalSeconds -= totalMinutes * 60;
+                var totalHours = Math.floor(totalMinutes / 60);
+                totalMinutes -= totalHours * 60;
+                var totalDays = Math.floor(totalHours / 24);
+                totalHours -= totalDays * 24;
+                this.remaining = {
+                    "days": totalDays,
+                    "hours": totalHours,
+                    "minutes": totalMinutes,
+                    "seconds": totalSeconds,
+                };
+            },
+        });
+    </script>
+
+</polymer-element>
