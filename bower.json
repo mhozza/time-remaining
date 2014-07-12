@@ -1,0 +1,20 @@
+{
+  "name": "time-remaining",
+  "version": "0.0.1",
+  "description": "Time-remaining polymer element. Displays time remaining from now to target time.",
+  "license": "MIT",
+  "main": "src/time-remaining.html",
+  "keywords": [
+    "polymer",
+    "web-components",
+    "time-remianing"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "~0.3.3"
+  }
+}
