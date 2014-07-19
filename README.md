@@ -28,6 +28,7 @@ Or [download as ZIP](https://github.com/mhozza/time-remaining/archive/master.zip
 
     ```html
     <time-remaining target="10/20/2030 18:47:42"></time-remaining>
+    <time-remaining target="10/20/2030 18:47:42" message="time is over"></time-remaining>
     ```
 
 ## Options
@@ -35,6 +36,8 @@ Or [download as ZIP](https://github.com/mhozza/time-remaining/archive/master.zip
 Attribute     | Options     | Default      | Description
 ---           | ---         | ---          | ---
 `target`      | *DateTime*  | ---          | Target DateTime
+`days`        | *string*    | ---          | days string
+`message`     | *string*    | ---          | message to display when time is over
 
 
 ## License
