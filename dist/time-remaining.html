@@ -2,15 +2,23 @@
 <link rel="import" href="../../polymer/polymer.html">
 
 <!-- Define your custom element -->
-<polymer-element name="time-remaining" attributes="target">
+<polymer-element name="time-remaining" attributes="target days message" days="days">
     <template>
-        {{remaining.days}} dní {{remaining.hours}}:{{remaining.minutes}}:{{remaining.seconds}}
+        <template if="{{ remaining.days>=0 }}">
+            {{remaining.days}} {{days}} {{remaining.hours|leadingZero}}:{{remaining.minutes|leadingZero}}:{{remaining.seconds|leadingZero}}
+        </template>
+        <template if="{{ remaining.days<0 }}">
+            {{message}}
+        </template>
     </template>
     <script>
         Polymer('time-remaining', {
             remaining: 0,
             ready: function() {
                 var _this = this;
+                if (this.message === null) {
+                    this.message = "0 " + this.days + " 00:00:00";
+                }
                 setInterval(function() { _this.update(); }, 500);
             },
             update: function() {
@@ -28,6 +36,12 @@
                     "minutes": totalMinutes,
                     "seconds": totalSeconds,
                 };
+            },
+            leadingZero: function(num) {
+                if (num < 10) {
+                    return '0' + num;
+                }
+                return num;
             },
         });
     </script>
